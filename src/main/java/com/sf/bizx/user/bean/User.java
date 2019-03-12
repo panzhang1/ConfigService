@@ -1,4 +1,4 @@
-package com.zp.gangu.user;
+package com.sf.bizx.user.bean;
 
 public class User {
 
