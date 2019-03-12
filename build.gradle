@@ -27,9 +27,15 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    compile("com.h2database:h2")
+	compile("org.springframework:spring-jdbc")
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
+    
+    testCompile("junit:junit")
     testCompile('org.springframework.boot:spring-boot-starter-test')
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    
 }
 
