@@ -8,6 +8,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
+/**
+ * It can only scan the component under this package com.sf.bizx.*
+ * @author i312127
+ *
+ */
 @SpringBootApplication
 //public class Application extends SpringBootServletInitializer{
 public class Application {
