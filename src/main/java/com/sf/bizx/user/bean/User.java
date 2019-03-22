@@ -1,20 +1,40 @@
 package com.sf.bizx.user.bean;
 
 public class User {
+    private String id;
+    private String name;
+    private String firstName;
+    private String lastName;
 
-    private final long id;
-    private final String name;
-
-    public User(long id, String name) {
+    public User() {
+    }
+    
+    public User(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
