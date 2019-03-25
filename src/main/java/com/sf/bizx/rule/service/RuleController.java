@@ -18,7 +18,7 @@ public class RuleController {
     RuleDAO ruleDao;
     
     @RequestMapping(value = "/rule",method= RequestMethod.GET)
-    public Rule rule(@RequestParam(value="code", defaultValue="Test") String code) {
+    public Rule getRule(@RequestParam(value="code") String code) {
         
         List<Rule> rules = ruleDao.loadRule(code);
         if (rules.isEmpty()) {

@@ -1,23 +1,22 @@
 package com.sf.bizx.user.service;
 
-import java.util.concurrent.atomic.AtomicLong;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sf.bizx.user.bean.User;
+import com.sf.bizx.user.dao.UserDAO;
 
 @RestController
 public class UserController {
-
-    private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
-
-    @RequestMapping(value = "/user",method= RequestMethod.GET)
-    public User user(@RequestParam(value="name", defaultValue="World") String name) {
-        return new User(counter.incrementAndGet(),
-                            String.format(template, name));
+    
+    @Autowired
+    UserDAO userDao;
+    
+    @RequestMapping(value = "/user/{userId}",method= RequestMethod.GET)
+    public User getUser(@PathVariable(value="userId") String userId) {
+        return userDao.getUser(userId);
     }
 }

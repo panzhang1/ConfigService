@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.sf.bizx.BIZXConstants;
 import com.sf.bizx.rule.bean.Rule;
 
 @Repository
@@ -18,9 +19,8 @@ public class RuleDAO {
     private JdbcTemplate jdbcTemplate;
     
     public List<Rule> loadRule(String code) {
-        return jdbcTemplate.query(
-                "SELECT ROW_ID,INTERNAL_ID,EXTERNAL_CODE,EXTERNAL_NAME FROM bizx_bizxtest.generic_object_t WHERE OBJECT_TYPE = 'Rule' AND  EXTERNAL_CODE = ?", new Object[] { code },
-                new RuleMapper());
+        String querySql = String.format("SELECT ROW_ID,INTERNAL_ID,EXTERNAL_CODE,EXTERNAL_NAME FROM %s.generic_object_t WHERE OBJECT_TYPE = 'Rule' AND  EXTERNAL_CODE = ?", BIZXConstants.DB_SCHEMA);
+        return jdbcTemplate.query( querySql, new Object[] { code },new RuleMapper());
     }
     
     class RuleMapper implements RowMapper<Rule> {
