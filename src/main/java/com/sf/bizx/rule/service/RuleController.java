@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sf.bizx.rule.bean.Rule;
 import com.sf.bizx.rule.dao.RuleDAO;
+import com.sf.bizx.rule.service.out.UserServiceProxy;
 
 @RestController
 public class RuleController {
@@ -28,6 +29,8 @@ public class RuleController {
             rule = rules.get(0);
         }
         
+        String displayName = UserServiceProxy.getInstance().getUserDisplayName(rule.getLastModifiedBy());
+        rule.setLastModifiedBy(displayName);
         return rule;
     }
 }
