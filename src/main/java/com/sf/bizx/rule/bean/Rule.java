@@ -9,6 +9,7 @@ public class Rule {
     private String name;
     private Date effectiveStartDate;
     private Date effectiveEndDate;
+    private String lastModifiedBy;
     
     public Long getRowId() {
         return rowId;
@@ -45,5 +46,11 @@ public class Rule {
     }
     public void setEffectiveEndDate(Date effectiveEndDate) {
         this.effectiveEndDate = effectiveEndDate;
+    }
+    public String getLastModifiedBy() {
+        return lastModifiedBy;
+    }
+    public void setLastModifiedBy(String lastModifiedBy) {
+        this.lastModifiedBy = lastModifiedBy;
     }
 }

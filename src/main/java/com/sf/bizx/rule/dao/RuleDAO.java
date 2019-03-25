@@ -19,7 +19,7 @@ public class RuleDAO {
     private JdbcTemplate jdbcTemplate;
     
     public List<Rule> loadRule(String code) {
-        String querySql = String.format("SELECT ROW_ID,INTERNAL_ID,EXTERNAL_CODE,EXTERNAL_NAME FROM %s.generic_object_t WHERE OBJECT_TYPE = 'Rule' AND  EXTERNAL_CODE = ?", BIZXConstants.DB_SCHEMA);
+        String querySql = String.format("SELECT ROW_ID,INTERNAL_ID,EXTERNAL_CODE,EXTERNAL_NAME,LAST_MODIFIED_BY FROM %s.generic_object_t WHERE OBJECT_TYPE = 'Rule' AND  EXTERNAL_CODE = ?", BIZXConstants.DB_SCHEMA);
         return jdbcTemplate.query( querySql, new Object[] { code },new RuleMapper());
     }
     
@@ -32,6 +32,7 @@ public class RuleDAO {
             rule.setInternalCode(rs.getLong("INTERNAL_ID"));
             rule.setName(rs.getString("EXTERNAL_NAME"));
             rule.setRowId(rs.getLong("ROW_ID"));
+            rule.setLastModifiedBy(rs.getString("LAST_MODIFIED_BY"));
             return rule;
         }
         

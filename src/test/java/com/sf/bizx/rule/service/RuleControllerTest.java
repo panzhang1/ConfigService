@@ -20,5 +20,6 @@ public class RuleControllerTest {
     public void getRule() throws Exception {
         Rule rule = ruleService.getRule("ruleVar1");
         Assert.assertEquals("ruleVar1", rule.getName());
+        Assert.assertEquals("admin", rule.getLastModifiedBy());
     }
 }
