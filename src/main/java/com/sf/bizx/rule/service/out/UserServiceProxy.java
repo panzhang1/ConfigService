@@ -21,12 +21,16 @@ public class UserServiceProxy {
      * @return
      */
     public String getUserDisplayName(String userId) {
-        RestTemplate restTemplate = new RestTemplate();
-        User user = restTemplate.getForObject(END_POINT + userId, User.class);
-        return formatUser(user);
+        return getUserDisplayNameFromService(END_POINT, userId);
     }
     
     private String formatUser(User user) {
         return String.format("%s %s", user.getFirstName(), user.getLastName());
+    }
+    
+    public String getUserDisplayNameFromService(String serverEndpoint,String userId) {
+        RestTemplate restTemplate = new RestTemplate();
+        User user = restTemplate.getForObject(serverEndpoint + userId, User.class);
+        return formatUser(user);
     }
 }
