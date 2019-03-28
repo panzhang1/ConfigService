@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import static org.mockito.Matchers.anyString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -32,7 +33,7 @@ public class RuleControllerTest {
     
     @Test
     public void getRule() throws Exception {
-        when(userServiceProxy.getUserDisplayName("admin")).thenReturn("Emily Clark");
+        when(userServiceProxy.getUserDisplayName(anyString())).thenReturn("Emily Clark");
         
         Rule rule = ruleService.getRule("ruleVar1");
         Assert.assertEquals("ruleVar1", rule.getName());
