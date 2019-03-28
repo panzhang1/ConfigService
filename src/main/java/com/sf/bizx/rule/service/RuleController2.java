@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sf.bizx.ServiceConfig;
 import com.sf.bizx.rule.bean.Rule;
 import com.sf.bizx.rule.dao.RuleDAO;
-import com.sf.bizx.rule.service.out.UserServiceProxy;
+import com.sf.bizx.rule.service.out.UserServiceDiscoverClient;
 
 @RestController
 public class RuleController2 {
@@ -19,8 +18,11 @@ public class RuleController2 {
     @Autowired
     RuleDAO ruleDao;
    
+    //@Autowired
+    //ServiceConfig config;
+    
     @Autowired
-    ServiceConfig config;
+    UserServiceDiscoverClient userService;
     
     @RequestMapping(value = "/ruleviaconfig",method= RequestMethod.GET)
     public Rule getRuleViaConfig(@RequestParam(value="code") String code) {
@@ -33,8 +35,17 @@ public class RuleController2 {
             rule = rules.get(0);
         }
         
-        String displayName = UserServiceProxy.getInstance().getUserDisplayNameFromService(config.userServiceEndPoint(), rule.getLastModifiedBy());
-        rule.setLastModifiedBy(displayName + "," + config.userServiceVersion());
+        rule.setLastModifiedBy(getUserNameFromEurekaServier(rule.getLastModifiedBy()));
         return rule;
+    }
+    
+    /*
+    private String getUserNameFromConfigServier(String userId) {
+        String displayName = UserServiceProxy.getInstance().getUserDisplayNameFromService(config.userServiceEndPoint(), userId);
+        return displayName + "," + config.userServiceVersion();
+    }*/
+    
+    private String getUserNameFromEurekaServier(String userId) {
+        return userService.getUserDisplayNameFromService( userId);
     }
 }
