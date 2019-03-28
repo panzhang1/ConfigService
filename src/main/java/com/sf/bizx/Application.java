@@ -2,6 +2,7 @@ package com.sf.bizx;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 
 /**
  * It can only scan the component under this package com.sf.bizx.*
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
+@RefreshScope
 //public class Application extends SpringBootServletInitializer{
 public class Application {
 //    @Override

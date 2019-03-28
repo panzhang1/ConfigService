@@ -34,7 +34,7 @@ public class RuleController2 {
         }
         
         String displayName = UserServiceProxy.getInstance().getUserDisplayNameFromService(config.userServiceEndPoint(), rule.getLastModifiedBy());
-        rule.setLastModifiedBy(displayName);
+        rule.setLastModifiedBy(displayName + "," + config.userServiceVersion());
         return rule;
     }
 }

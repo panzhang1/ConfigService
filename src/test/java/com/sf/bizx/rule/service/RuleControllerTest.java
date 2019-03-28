@@ -11,6 +11,7 @@ import org.mockito.MockitoAnnotations;
 import static org.mockito.Matchers.anyString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sf.bizx.rule.bean.Rule;
@@ -18,6 +19,7 @@ import com.sf.bizx.rule.service.out.UserServiceProxy;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@TestPropertySource("classpath:testconfig.properties")
 public class RuleControllerTest {
 
     @Autowired
