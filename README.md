@@ -8,4 +8,4 @@ Run:
 ./gradlew bootRun
 
 ## Config Service
-- Fetch user Information
+- Fetch config Information
