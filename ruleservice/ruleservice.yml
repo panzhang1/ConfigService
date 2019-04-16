@@ -1,0 +1,2 @@
+rule_endpoint: "http://localhost:8081/rule/"
+rule_version: 1.2

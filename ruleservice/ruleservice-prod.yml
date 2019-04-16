@@ -1,0 +1,2 @@
+rule_endpoint: "http://localhost:8888/rule/"
+rule_version: GA
