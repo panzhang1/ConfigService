@@ -1,11 +1,25 @@
 # ConfigService
 This is ConfigService
 
-Rule As Jar:
-build:
-./gradlew build
-Run:
-./gradlew bootRun
+## Usage Guild
+- Directly Run
+gradle build
+gradle bootRun
+gradle bootRun --debug-jvm
+
+- Run by Docker
+https://spring.io/guides/gs/spring-boot-docker/#initial
+
+gradle build docker
+docker run -p 8888:8888 -t pangu/configservice
+
+- Debug for Docker
+docker run -e "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n"
+
+- stop Docker service
+docker ps
+docker stop "container id"
+docker rm "container id"
 
 ## Config Service
 - Fetch config Information
